@@ -35,12 +35,12 @@
     <h1>Clicker Game</h1>
     <p id="score">0</p>
     <button onclick="addPoint()">Click me!</button>
-
     <br>
     <h2>Shop</h2>
     <!-- Add some shop items -->
     <div class="shop-item">
-      <p>Multiplier x2:</p>
+      <p>
+Multiplier x2:</p>
       <p id="multiplier-cost">Cost: 100 points</p>
       <button onclick="buyMultiplier()">Buy</button>
     </div>
@@ -51,8 +51,7 @@
     </div>
     <div class="shop-item">
       <p>Multiplier x4:</p>
-      <p id="multiplier4-cost">Cost
-: 500 points</p>
+      <p id="multiplier4-cost">Cost: 500 points</p>
       <button onclick="buyMultiplier4()">Buy</button>
     </div>
     <div class="shop-item">
@@ -89,8 +88,7 @@
           multiplier *= 2;
           score -= multiplierCost;
           multiplierCost *= 1.25;
-          document.getElementById('multiplier-cost').innerHTML = 'Cost: ' + multiplierCost + '
-points';
+          document.getElementById('multiplier-cost').innerHTML = 'Cost: ' + multiplierCost + ' points';
           document.getElementById('score').innerHTML = score;
         }
       }
@@ -116,7 +114,8 @@ points';
           multiplier *= 4;
           score -= multiplier4Cost;
           multiplier4Cost *= 1.25;
-          document.getElementById('multiplier4-cost').innerHTML = 'Cost: ' + multiplier4Cost + ' points';
+          document.getElementById('multiplier4-cost').innerHTML = 'Cost: ' + multiplier4
+cost + ' points';
           document.getElementById('score').innerHTML = score;
         }
       }
@@ -138,4 +137,3 @@ points';
     </script>
   </body>
 </html>
-
