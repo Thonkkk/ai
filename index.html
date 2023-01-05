@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Clicker Game</title>
+    <style>
+      /* Add some style to your game */
+      body {
+        text-align: center;
+        font-family: sans-serif;
+      }
+      #score {
+        font-size: 32px;
+      }
+      button {
+        border: none;
+        background-color: blue;
+        color: white;
+        padding: 16px 32px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      /* Style the shop items */
+      .shop-item {
+        display: inline-block;
+        margin: 16px;
+        border: 1px solid black;
+        background-color: white;
+      }
+      .shop-item p {
+        margin: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Clicker Game</h1>
+    <p id="score">0</p>
+    <button onclick="addPoint()">Click me!</button>
+
+    <br>
+    <h2>Shop</h2>
+    <!-- Add some shop items -->
+    <div class="shop-item">
+      <p>Multiplier x2:</p>
+      <p id="multiplier-cost">Cost: 100 points</p>
+      <button onclick="buyMultiplier()">Buy</button>
+    </div>
+    <div class="shop-item">
+      <p>Autoclicker:</p>
+      <p id="autoclicker-cost">Cost: 250 points</p>
+      <button onclick="buyAutoclicker()">Buy</button>
+    </div>
+    <div class="shop-item">
+      <p>Multiplier x4:</p>
+      <p id="multiplier4-cost">Cost
+: 500 points</p>
+      <button onclick="buyMultiplier4()">Buy</button>
+    </div>
+    <div class="shop-item">
+      <p>Rebirth:</p>
+      <p id="rebirth-cost">Cost: 1000 points</p>
+      <button onclick="rebirth()">Buy</button>
+    </div>
+
+    <script>
+      // Keep track of the player's score
+      let score = 0;
+      // Keep track of the player's multiplier
+      let multiplier = 1;
+      // Keep track of the autoclicker status
+      let autoclicker = false;
+      // Keep track of the cost of the multiplier
+      let multiplierCost = 100;
+      // Keep track of the cost of the autoclicker
+      let autoclickerCost = 250;
+      // Keep track of the cost of the multiplier x4
+      let multiplier4Cost = 500;
+      // Keep track of the cost of rebirth
+      let rebirthCost = 1000;
+
+      // Increment the score by 1 when the button is clicked
+      function addPoint() {
+        score += multiplier;
+        document.getElementById('score').innerHTML = score;
+      }
+
+      // Function to buy the multiplier
+      function buyMultiplier() {
+        if (score >= multiplierCost) {
+          multiplier *= 2;
+          score -= multiplierCost;
+          multiplierCost *= 1.25;
+          document.getElementById('multiplier-cost').innerHTML = 'Cost: ' + multiplierCost + '
+points';
+          document.getElementById('score').innerHTML = score;
+        }
+      }
+
+      // Function to buy the autoclicker
+      function buyAutoclicker() {
+        if (score >= autoclickerCost) {
+          autoclicker = true;
+          score -= autoclickerCost;
+          autoclickerCost *= 1.25;
+          document.getElementById('autoclicker-cost').innerHTML = 'Cost: ' + autoclickerCost + ' points';
+          document.getElementById('score').innerHTML = score;
+          // Start the autoclicker
+          setInterval(function() {
+            addPoint();
+          }, 1000);
+        }
+      }
+
+      // Function to buy the multiplier x4
+      function buyMultiplier4() {
+        if (score >= multiplier4Cost) {
+          multiplier *= 4;
+          score -= multiplier4Cost;
+          multiplier4Cost *= 1.25;
+          document.getElementById('multiplier4-cost').innerHTML = 'Cost: ' + multiplier4Cost + ' points';
+          document.getElementById('score').innerHTML = score;
+        }
+      }
+
+      // Function to rebirth
+      function rebirth() {
+        if (score >= rebirthCost) {
+          score = 0;
+          multiplier = 1;
+          autoclicker = false;
+          multiplierCost = 100;
+          autoclickerCost = 250;
+          multiplier4Cost = 500;
+          rebirthCost *= 1.25;
+          document.getElementById('rebirth-cost').innerHTML = 'Cost: ' + rebirthCost + ' points';
+          document.getElementById('score').innerHTML = score;
+        }
+      }
+    </script>
+  </body>
+</html>
+
